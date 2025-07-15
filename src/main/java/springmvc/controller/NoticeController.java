@@ -25,6 +25,7 @@ public class NoticeController {
 		mav.addObject("list", "게시물 목록"); // request.setAttribute("list", "게시물 목록"); 과 동일
 		mav.setViewName("notice/list");
 		
+		// 데이터 저장 후 JSP 보여주기 → 기본값은 forward
 		return mav;
 	}
 	
@@ -32,6 +33,8 @@ public class NoticeController {
 	// 하지만 spring mvc에서는 jsp마저도 직접 접근을 막고 컨트롤러 매핑으로 처리함)
 	@RequestMapping("/notice/registform")
 	public String registForm() {
+		
+		// 단순히 입력폼 보여주기 → forward
 		return "notice/write";
 	} // localhost:7777/shop/notice/registform
 	
@@ -45,6 +48,7 @@ public class NoticeController {
 		log.debug("글쓰기 요청 받음");
 		
 		// 개발자가 redirect를 명시하지 않으면, 스프링은 디폴트 forward임
+		// 글 등록 후, 목록 다시 보여주기 위해 **redirect** 주소값도 갱신해줘야함!
 		return "redirect:/shop/notice/list";
 		
 	}
