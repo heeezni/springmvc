@@ -52,4 +52,28 @@ public class NoticeController {
 		return "redirect:/shop/notice/list";
 		
 	}
+	
+	@RequestMapping("/notice/detail")
+	public ModelAndView getDetail() {
+		log.debug("상세보기 요청 받음");
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/notice/update", method=RequestMethod.GET)
+	public String update() {
+		log.debug("수정 요청 받음");
+		
+		// 글 수정 후 상세보기를 바로 다시 보여줘야함!
+		return "redirect:/shop/notice/detail?notice_id=3";	
+	}
+	
+	@RequestMapping(value="/notice/delete", method=RequestMethod.GET)
+	public String delete() {
+		
+		log.debug("삭제 요청 받음");
+		return "redirect:/shop/notice/list";
+	}
+	
+	
 }
